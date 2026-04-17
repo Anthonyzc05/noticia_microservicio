@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Notificaciones</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<h1> Notificaciones</h1>
+
+<div th:each="n : ${notificaciones}">
+
+    <p><b>ID:</b> <span th:text="${n.id}"></span></p>
+
+    <p><b>Usuario:</b> <span th:text="${n.usuarioId}"></span></p>
+
+    <p><b>Alerta:</b> <span th:text="${n.alerta}"></span></p>
+
+    <p><b>Leído:</b> <span th:text="${n.leido}"></span></p>
+
+    <p><b>Fecha:</b> <span th:text="${n.fecha}"></span></p>
+
+    <button th:attr="data-id=${n.id}" onclick="eliminar(this)">
+        🗑 Eliminar
+    </button>
+
+    <hr>
+</div>
+
+        <hr>
+    </div>
+
+</div>
+<script th:src="@{/js/app.js}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>
