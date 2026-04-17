@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Favoritos</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<h1>Lista de Favoritos</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Usuario</th>
+            <th>Artículo</th>
+            <th>Fecha</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr th:each="f : ${favoritos}">
+            <td th:text="${f.id}"></td>
+            <td th:text="${f.usuarioId}"></td>
+            <td th:text="${f.articuloId}"></td>
+            <td th:text="${f.fecha}"></td>
+            <td>
+                <a th:href="@{'/eliminar/' + ${f.id}}" class="btn-eliminar">Eliminar</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
