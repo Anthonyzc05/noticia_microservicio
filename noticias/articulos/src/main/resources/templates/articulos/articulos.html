@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${tituloPagina}">Artículos</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+    <header class="hero">
+        <div class="hero-contenido">
+            <span class="etiqueta">Noticias Digitales</span>
+            <h1 th:text="${tituloPagina}">Microservicio de Artículos</h1>
+            <p th:text="${subtitulo}">Gestión visual de artículos</p>
+        </div>
+    </header>
+
+    <main class="contenedor">
+
+        <section class="intro">
+            <h2>Registro de artículos</h2>
+            <p>Formulario visual basado en los atributos del modelo Articulo.</p>
+        </section>
+
+        <section class="formulario-section">
+            <form class="formulario-articulo">
+                <div class="grupo">
+                    <label for="titulo">Título</label>
+                    <input type="text" id="titulo" placeholder="Ingrese el título del artículo">
+                </div>
+
+                <div class="grupo">
+                    <label for="contenido">Contenido</label>
+                    <textarea id="contenido" rows="5" placeholder="Ingrese el contenido del artículo"></textarea>
+                </div>
+
+                <div class="grupo-doble">
+                    <div class="grupo">
+                        <label for="autorId">Autor ID</label>
+                        <input type="text" id="autorId" placeholder="Ej: AUT001">
+                    </div>
+
+                    <div class="grupo">
+                        <label for="categoriaId">Categoría ID</label>
+                        <input type="text" id="categoriaId" placeholder="Ej: CAT001">
+                    </div>
+                </div>
+
+                <div class="grupo-doble">
+                    <div class="grupo">
+                        <label for="fecha">Fecha</label>
+                        <input type="datetime-local" id="fecha">
+                    </div>
+
+                    <div class="grupo">
+                        <label for="publicacion">Publicado</label>
+                        <select id="publicacion">
+                            <option value="true">Sí</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="boton-principal">Guardar artículo</button>
+            </form>
+        </section>
+
+        <section class="tabla-section">
+            <h2>Listado de artículos</h2>
+
+            <div class="tabla-contenedor">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Título</th>
+                            <th>Contenido</th>
+                            <th>Autor ID</th>
+                            <th>Categoría ID</th>
+                            <th>Fecha</th>
+                            <th>Publicado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="articulo : ${articulos}">
+                            <td th:text="${articulo.id}"></td>
+                            <td th:text="${articulo.titulo}"></td>
+                            <td th:text="${articulo.contenido}"></td>
+                            <td th:text="${articulo.autorId}"></td>
+                            <td th:text="${articulo.categoriaId}"></td>
+                            <td th:text="${articulo.fecha}"></td>
+                            <td>
+                                <span th:if="${articulo.publicacion}" class="estado publicado">Sí</span>
+                                <span th:unless="${articulo.publicacion}" class="estado borrador">No</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 Proyecto Noticias - Microservicio de Artículos</p>
+    </footer>
+
+</body>
+</html>
