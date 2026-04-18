@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/formulario	")
+@RequestMapping("/formulario")
 public class vistacontroller {
 
     private List<Comentario> listaComentarios = new ArrayList<>();
