@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Reacciones</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<h1>Gestión de Reacciones</h1>
+
+<!-- 🔥 TABLA DE REACCIONES -->
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Usuario</th>
+            <th>Artículo</th>
+            <th>Tipo</th>
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="r : ${reacciones}">
+            <td th:text="${r.id}"></td>
+            <td th:text="${r.usuarioId}"></td>
+            <td th:text="${r.articuloId}"></td>
+            <td th:text="${r.tipo}"></td>
+            <td>
+                <a th:href="@{'/reacciones/eliminar/' + ${r.id}}">
+                    ❌ Eliminar
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<!-- 🔥 SECCIÓN DE REACCIONES (lo que ya tenías) -->
+<h2>Reacciones por artículo</h2>
+
+<p><strong>ID Artículo:</strong> 
+    <span th:text="${articuloId}"></span>
+</p>
+
+<div>
+    👍 Likes: <span th:text="${likes}"></span><br>
+    👎 Dislikes: <span th:text="${dislikes}"></span>
+</div>
+
+<h3>Reaccionar:</h3>
+
+<form th:action="@{/reacciones/guardar}" method="post">
+
+    <input type="hidden" name="articuloId" th:value="${articuloId}"/>
+
+    <button type="submit" name="tipo" value="like">👍 Like</button>
+    <button type="submit" name="tipo" value="dislike">👎 Dislike</button>
+
+</form>
+
+</body>
+</html>

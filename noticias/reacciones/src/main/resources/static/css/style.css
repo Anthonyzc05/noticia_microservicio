@@ -1,0 +1,38 @@
+body {
+    font-family: Arial;
+    background: #f4f6f9;
+    text-align: center;
+}
+
+.card {
+    width: 40%;
+    margin: 30px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+button {
+    margin: 10px;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[value="like"] {
+    background-color: #007bff;
+    color: white;
+}
+
+button[value="dislike"] {
+    background-color: #dc3545;
+    color: white;
+}
+
+button[value="love"] {
+    background-color: #e83e8c;
+    color: white;
+}
