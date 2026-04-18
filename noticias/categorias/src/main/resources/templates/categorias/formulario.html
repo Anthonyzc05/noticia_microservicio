@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Registrar Categoría</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+
+<h2>Registrar Categoría</h2>
+
+<form th:action="@{/categorias/guardar}" th:object="${categoria}" method="post">
+
+    <label>Nombre:</label>
+    <input type="text" th:field="*{nombre}" required>
+
+    <label>Descripción:</label>
+    <input type="text" th:field="*{descripcion}" required>
+
+    <button type="submit">Guardar</button>
+
+</form>
+
+<div style="text-align:center; margin-top:15px;">
+    <a href="/categorias">Volver</a>
+</div>
+
+</body>
+</html>
