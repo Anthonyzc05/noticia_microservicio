@@ -14,8 +14,7 @@ public class VistaController {
 
     @Autowired
     private ReaccionService service;
-
-   
+//get
     @GetMapping
     public String verTodo(Model model) {
 
