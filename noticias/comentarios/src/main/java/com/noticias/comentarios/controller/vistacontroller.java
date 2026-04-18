@@ -1,65 +1,41 @@
 package com.noticias.comentarios.controller;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.noticias.comentarios.model.Comentario;
+import com.noticias.comentarios.service.ComentarioService;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/formulario")
+@RequestMapping("/comentarios")
 public class vistacontroller {
 
-    private List<Comentario> listaComentarios = new ArrayList<>();
-    private Long contador = 1L;
+    @Autowired
+    private ComentarioService service;
 
-    // 🔹 Mostrar página
+    // 🔹 MOSTRAR HTML
     @GetMapping
-    public String mostrarFormulario(Model model) {
+    public String listar(Model model) {
         model.addAttribute("comentario", new Comentario());
-        model.addAttribute("listaComentarios", listaComentarios);
-        return "comentarios/formulario"; // importante por tu carpeta
+        model.addAttribute("comentarios", service.findAll());
+
+        // 👇 IMPORTANTE (por tu carpeta)
+        return "comentarios/formulario";
     }
 
-    // 🔹 Guardar comentario
+    // 🔹 GUARDAR
     @PostMapping("/guardar")
-    public String guardarComentario(@ModelAttribute Comentario comentario) {
-        comentario.setId(contador++);
-        listaComentarios.add(comentario);
+    public String guardar(@ModelAttribute Comentario comentario) {
+        service.save(comentario);
         return "redirect:/comentarios";
     }
 
-    // 🔹 Eliminar comentario
+    // 🔹 ELIMINAR
     @GetMapping("/eliminar/{id}")
-    public String eliminarComentario(@PathVariable Long id) {
-        listaComentarios.removeIf(c -> c.getId().equals(id));
+    public String eliminar(@PathVariable String id) {
+        service.deleteById(id);
         return "redirect:/comentarios";
-    }
-
-    // 🔹 Clase interna
-    public static class Comentario {
-        private Long id;
-        private String comentario;
-        private Long usuarioId;
-        private Long articuloId;
-        private String fecha;
-
-        public Comentario() {}
-
-        public Long getId() { return id; }
-        public void setId(Long id) { this.id = id; }
-
-        public String getComentario() { return comentario; }
-        public void setComentario(String comentario) { this.comentario = comentario; }
-
-        public Long getUsuarioId() { return usuarioId; }
-        public void setUsuarioId(Long usuarioId) { this.usuarioId = usuarioId; }
-
-        public Long getArticuloId() { return articuloId; }
-        public void setArticuloId(Long articuloId) { this.articuloId = articuloId; }
-
-        public String getFecha() { return fecha; }
-        public void setFecha(String fecha) { this.fecha = fecha; }
     }
 }
