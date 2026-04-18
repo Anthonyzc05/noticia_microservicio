@@ -1,204 +1,83 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f4f7fb;
-    color: #1e293b;
-    line-height: 1.6;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
 }
 
-.hero {
-    min-height: 45vh;
-    background: linear-gradient(135deg, #0f172a, #1d4ed8, #38bdf8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 40px 20px;
-    color: white;
-}
-
-.hero-contenido {
-    max-width: 850px;
-}
-
-.etiqueta {
-    display: inline-block;
-    background: rgba(255, 255, 255, 0.2);
-    padding: 8px 16px;
-    border-radius: 30px;
-    margin-bottom: 20px;
-    font-size: 0.9rem;
-    font-weight: bold;
-}
-
-.hero h1 {
-    font-size: 3rem;
-    margin-bottom: 15px;
-}
-
-.hero p {
-    font-size: 1.2rem;
-}
-
+/* CONTENEDOR */
 .contenedor {
     width: 90%;
-    max-width: 1200px;
-    margin: 40px auto;
+    margin: auto;
 }
 
-.intro {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.intro h2 {
-    font-size: 2rem;
-    margin-bottom: 10px;
-    color: #0f172a;
-}
-
-.intro p {
-    color: #475569;
-}
-
-.formulario-section {
+/* TARJETAS */
+.card {
     background: white;
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-    margin-bottom: 40px;
-}
-
-.formulario-articulo {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.grupo {
-    display: flex;
-    flex-direction: column;
-}
-
-.grupo label {
-    font-weight: bold;
-    margin-bottom: 8px;
-    color: #0f172a;
-}
-
-.grupo input,
-.grupo textarea,
-.grupo select {
-    padding: 12px 14px;
-    border: 1px solid #cbd5e1;
-    border-radius: 12px;
-    outline: none;
-    font-size: 0.95rem;
-}
-
-.grupo input:focus,
-.grupo textarea:focus,
-.grupo select:focus {
-    border-color: #2563eb;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
-}
-
-.grupo-doble {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
-
-.boton-principal {
-    background: #2563eb;
-    color: white;
-    border: none;
-    padding: 14px 24px;
-    border-radius: 14px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.boton-principal:hover {
-    background: #1d4ed8;
-    transform: translateY(-2px);
-}
-
-.tabla-section {
-    background: white;
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-}
-
-.tabla-section h2 {
+    padding: 20px;
     margin-bottom: 20px;
-    color: #0f172a;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
 }
 
-.tabla-contenedor {
-    overflow-x: auto;
+/* TITULOS */
+h1, h2 {
+    text-align: center;
 }
 
+/* INPUTS */
+input, textarea {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* BOTONES */
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"] {
+    background-color: #28a745;
+    color: white;
+}
+
+button[type="reset"] {
+    background-color: #6c757d;
+    color: white;
+}
+
+/* TABLA */
 table {
     width: 100%;
     border-collapse: collapse;
 }
 
-table thead {
-    background: #0f172a;
+th {
+    background-color: #007bff;
     color: white;
 }
 
-table th,
-table td {
-    padding: 14px;
-    text-align: left;
-    border-bottom: 1px solid #e2e8f0;
-}
-
-table tbody tr:hover {
-    background: #f8fafc;
-}
-
-.estado {
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: bold;
-}
-
-.publicado {
-    background: #dcfce7;
-    color: #15803d;
-}
-
-.borrador {
-    background: #fee2e2;
-    color: #b91c1c;
-}
-
-.footer {
-    background: #0f172a;
-    color: white;
+th, td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
     text-align: center;
-    padding: 20px;
-    margin-top: 50px;
 }
 
-@media (max-width: 768px) {
-    .hero h1 {
-        font-size: 2.2rem;
-    }
+/* BOTON ELIMINAR */
+a {
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+}
 
-    .grupo-doble {
-        grid-template-columns: 1fr;
-    }
+a:hover {
+    background-color: darkred;
 }

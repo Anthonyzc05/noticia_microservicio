@@ -2,109 +2,82 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title th:text="${tituloPagina}">Artículos</title>
+    <title>Gestión de Artículos</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 
-    <header class="hero">
-        <div class="hero-contenido">
-            <span class="etiqueta">Noticias Digitales</span>
-            <h1 th:text="${tituloPagina}">Microservicio de Artículos</h1>
-            <p th:text="${subtitulo}">Gestión visual de artículos</p>
-        </div>
-    </header>
+<div class="contenedor">
 
-    <main class="contenedor">
+    <!-- 🔹 FORMULARIO -->
+    <div class="card">
+        <h1>Registrar Artículo</h1>
 
-        <section class="intro">
-            <h2>Registro de artículos</h2>
-            <p>Formulario visual basado en los atributos del modelo Articulo.</p>
-        </section>
+        <form th:action="@{/articulos/guardar}" th:object="${articulo}" method="post">
 
-        <section class="formulario-section">
-            <form class="formulario-articulo">
-                <div class="grupo">
-                    <label for="titulo">Título</label>
-                    <input type="text" id="titulo" placeholder="Ingrese el título del artículo">
-                </div>
+            <label>Título</label>
+            <input type="text" th:field="*{titulo}" required>
 
-                <div class="grupo">
-                    <label for="contenido">Contenido</label>
-                    <textarea id="contenido" rows="5" placeholder="Ingrese el contenido del artículo"></textarea>
-                </div>
+            <label>Contenido</label>
+            <textarea th:field="*{contenido}" required></textarea>
 
-                <div class="grupo-doble">
-                    <div class="grupo">
-                        <label for="autorId">Autor ID</label>
-                        <input type="text" id="autorId" placeholder="Ej: AUT001">
-                    </div>
+            <label>ID Categoría</label>
+            <input type="text" th:field="*{categoriaId}" required>
 
-                    <div class="grupo">
-                        <label for="categoriaId">Categoría ID</label>
-                        <input type="text" id="categoriaId" placeholder="Ej: CAT001">
-                    </div>
-                </div>
+            <label>ID Autor</label>
+            <input type="text" th:field="*{autorId}" required>
 
-                <div class="grupo-doble">
-                    <div class="grupo">
-                        <label for="fecha">Fecha</label>
-                        <input type="datetime-local" id="fecha">
-                    </div>
+            <label>Fecha</label>
+            <input type="date" th:field="*{fecha}" required>
 
-                    <div class="grupo">
-                        <label for="publicacion">Publicado</label>
-                        <select id="publicacion">
-                            <option value="true">Sí</option>
-                            <option value="false">No</option>
-                        </select>
-                    </div>
-                </div>
+            <br><br>
 
-                <button type="submit" class="boton-principal">Guardar artículo</button>
-            </form>
-        </section>
+            <button type="submit">Guardar</button>
+            <button type="reset">Limpiar</button>
+        </form>
+    </div>
 
-        <section class="tabla-section">
-            <h2>Listado de artículos</h2>
+    <!-- 🔹 TABLA -->
+    <div class="card">
+        <h2>Lista de Artículos</h2>
 
-            <div class="tabla-contenedor">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Título</th>
-                            <th>Contenido</th>
-                            <th>Autor ID</th>
-                            <th>Categoría ID</th>
-                            <th>Fecha</th>
-                            <th>Publicado</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="articulo : ${articulos}">
-                            <td th:text="${articulo.id}"></td>
-                            <td th:text="${articulo.titulo}"></td>
-                            <td th:text="${articulo.contenido}"></td>
-                            <td th:text="${articulo.autorId}"></td>
-                            <td th:text="${articulo.categoriaId}"></td>
-                            <td th:text="${articulo.fecha}"></td>
-                            <td>
-                                <span th:if="${articulo.publicacion}" class="estado publicado">Sí</span>
-                                <span th:unless="${articulo.publicacion}" class="estado borrador">No</span>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>Contenido</th>
+                    <th>Categoría</th>
+                    <th>Autor</th>
+                    <th>Fecha</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
 
-    </main>
+            <tbody>
+                <tr th:each="a : ${articulos}">
+                    <td th:text="${a.id}"></td>
+                    <td th:text="${a.titulo}"></td>
+                    <td th:text="${a.contenido}"></td>
+                    <td th:text="${a.categoriaId}"></td>
+                    <td th:text="${a.autorId}"></td>
+                    <td th:text="${a.fecha}"></td>
+                    <td>
+                        <a th:href="@{'/articulos/eliminar/' + ${a.id}}"
+                           onclick="return confirm('¿Eliminar artículo?')">
+                            Eliminar
+                        </a>
+                    </td>
+                </tr>
 
-    <footer class="footer">
-        <p>© 2026 Proyecto Noticias - Microservicio de Artículos</p>
-    </footer>
+                <tr th:if="${#lists.isEmpty(articulos)}">
+                    <td colspan="7">No hay artículos registrados</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
 
 </body>
 </html>
