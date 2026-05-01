@@ -1,71 +1,94 @@
+/* ====== ESTILO GENERAL ====== */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f6fb;
-    padding: 20px;
-    margin: 0;
+font-family: 'Segoe UI', sans-serif;
+background-color: #f4f6f9;
+margin: 0;
+padding: 0;
 }
 
+/* ====== HEADER ====== */
 h1 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #2c3e50;
+background: #1e293b;
+color: white;
+padding: 20px;
+margin: 0;
+text-align: center;
+font-size: 24px;
+letter-spacing: 1px;
 }
 
-.contenedor {
-    max-width: 650px;
-    margin: auto;
+/* ====== CONTENEDOR ====== */
+.container {
+max-width: 700px;
+margin: 30px auto;
+padding: 10px;
 }
 
+/* ====== TARJETAS ====== */
 .card {
-    background: white;
-    padding: 18px;
-    margin: 12px 0;
-    border-radius: 14px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    transition: transform 0.2s ease;
+background: white;
+border-radius: 12px;
+padding: 15px;
+margin-bottom: 15px;
+box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .card:hover {
-    transform: translateY(-3px);
+transform: translateY(-3px);
+box-shadow: 0 6px 15px rgba(0,0,0,0.12);
 }
 
-.mensaje {
-    font-size: 16px;
-    font-weight: 600;
-    color: #2c3e50;
+/* ====== NOTIFICACIONES ====== */
+.no-leido {
+border-left: 5px solid #3b82f6;
+background-color: #eff6ff;
 }
 
-.fecha {
-    font-size: 12px;
-    color: #7f8c8d;
-    margin-top: 5px;
+.leido {
+opacity: 0.7;
 }
 
+/* ====== TEXTO ====== */
+.card p {
+margin: 6px 0;
+font-size: 14px;
+}
+
+.card b {
+color: #374151;
+}
+
+/* ====== BOTÓN ====== */
 button {
-    margin-top: 12px;
-    background: #e74c3c;
-    color: white;
-    border: none;
-    padding: 7px 12px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.2s;
+background: #ef4444;
+color: white;
+border: none;
+padding: 8px 12px;
+border-radius: 8px;
+cursor: pointer;
+transition: background 0.2s;
 }
 
 button:hover {
-    background: #c0392b;
-}
-.badge {
-    background: red;
-    color: white;
-    border-radius: 50%;
-    padding: 5px 10px;
-}
-.card {
-    animation: fadeIn 0.3s ease-in;
+background: #dc2626;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+/* ====== BADGE ====== */
+.badge {
+display: inline-block;
+padding: 4px 8px;
+font-size: 12px;
+border-radius: 6px;
+background: #3b82f6;
+color: white;
+margin-top: 5px;
+}
+
+/* ====== ACCIONES ====== */
+.acciones {
+margin-top: 10px;
+display: flex;
+justify-content: space-between;
+align-items: center;
 }

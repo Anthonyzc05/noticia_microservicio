@@ -2,6 +2,7 @@ package com.noticias.notificaciones.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import java.time.LocalDateTime;
 
 @Document(collection = "notificaciones")
 public class Notificacion {
@@ -12,7 +13,7 @@ public class Notificacion {
     private String usuarioId;
     private Boolean leido;
     private String alerta;
-    private String fecha;
+    private LocalDateTime fecha;
 
     public String getId() { return id; }
     public void setId(String id) { this.id = id; }
@@ -26,6 +27,6 @@ public class Notificacion {
     public String getAlerta() { return alerta; }
     public void setAlerta(String alerta) { this.alerta = alerta; }
 
-    public String getFecha() { return fecha; }
-    public void setFecha(String fecha) { this.fecha = fecha; }
+    public LocalDateTime getFecha() { return fecha; }
+    public void setFecha(LocalDateTime fecha) { this.fecha = fecha; }
 }
