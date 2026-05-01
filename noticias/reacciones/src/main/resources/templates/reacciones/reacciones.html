@@ -7,57 +7,72 @@
 <body>
 
 <h1>Gestión de Reacciones</h1>
+<a href="http://localhost:8084/usuarios ">Regreso a usuario</a>
+<div class="container">
 
+    <!-- CARD PRINCIPAL -->
+    <div class="card">
 
-<table border="1">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Usuario</th>
-            <th>Artículo</th>
-            <th>Tipo</th>
-            <th>Acción</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr th:each="r : ${reacciones}">
-            <td th:text="${r.id}"></td>
-            <td th:text="${r.usuarioId}"></td>
-            <td th:text="${r.articuloId}"></td>
-            <td th:text="${r.tipo}"></td>
-            <td>
-                <a th:href="@{'/reacciones/eliminar/' + ${r.id}}">
-                    ❌ Eliminar
-                </a>
-            </td>
-        </tr>
-    </tbody>
-</table>
+        <p class="id-noticia">
+            ID Artículo: <span th:text="${articuloId}"></span>
+        </p>
 
-<hr>
+        <div class="reacciones">
+            👍 Likes: <span th:text="${likes}"></span><br>
+            👎 Dislikes: <span th:text="${dislikes}"></span>
+        </div>
 
+        <h3>Reaccionar</h3>
 
-<h2>Reacciones por artículo</h2>
+        <form th:action="@{/reacciones/guardar}" method="post">
+            <input type="hidden" name="articuloId" th:value="${articuloId}"/>
 
-<p><strong>ID Artículo:</strong> 
-    <span th:text="${articuloId}"></span>
-</p>
+            <div class="botones">
+                <button type="submit" name="tipo" value="like" class="like">
+                    👍 Like
+                </button>
 
-<div>
-    👍 Likes: <span th:text="${likes}"></span><br>
-    👎 Dislikes: <span th:text="${dislikes}"></span>
+                <button type="submit" name="tipo" value="dislike" class="dislike">
+                    👎 Dislike
+                </button>
+            </div>
+        </form>
+
+    </div>
+
+    <!-- TABLA -->
+    <div class="card">
+        <h3>Lista de Reacciones</h3>
+
+        <table >
+            <thead>
+                <tr class="table">
+                    <th>ID</th>
+                    <th>Usuario</th>
+                    <th>Artículo</th>
+                    <th>Tipo</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr th:each="r : ${reacciones}">
+                    <td th:text="${r.id}"></td>
+                    <td th:text="${r.usuarioId}"></td>
+                    <td th:text="${r.articuloId}"></td>
+                    <td th:text="${r.tipo}"></td>
+                    <td>
+                        <a th:href="@{'/reacciones/eliminar/' + ${r.id}}">
+                            ❌
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
 </div>
-
-<h3>Reaccionar:</h3>
-
-<form th:action="@{/reacciones/guardar}" method="post">
-
-    <input type="hidden" name="articuloId" th:value="${articuloId}"/>
-
-    <button type="submit" name="tipo" value="like">👍 Like</button>
-    <button type="submit" name="tipo" value="dislike">👎 Dislike</button>
-
-</form>
 
 </body>
 </html>

@@ -1,38 +1,131 @@
+/* FONDO GENERAL */
 body {
-    font-family: Arial;
-    background: #f4f6f9;
-    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    margin: 0;
+    padding: 0;
 }
 
+/* TÍTULO */
+h1 {
+    text-align: center;
+    color: white;
+    margin-top: 30px;
+}
+
+/* CONTENEDOR */
+.container {
+    width: 80%;
+    margin: auto;
+    margin-top: 30px;
+}
+
+/* TARJETAS */
 .card {
-    width: 40%;
-    margin: 30px auto;
-    padding: 20px;
     background: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.2);
+    margin-bottom: 30px;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.01);
+}
+
+/* TEXTO */
+.id-noticia {
+    text-align: center;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.reacciones {
+    text-align: center;
+    font-size: 18px;
+    margin: 15px 0;
+}
+
+/* BOTONES */
+.botones {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 15px;
 }
 
 button {
-    margin: 10px;
-    padding: 10px 15px;
-    font-size: 16px;
     border: none;
-    border-radius: 5px;
+    padding: 12px 20px;
+    border-radius: 10px;
+    color: white;
+    font-size: 14px;
     cursor: pointer;
+    transition: 0.3s;
 }
 
-button[value="like"] {
-    background-color: #007bff;
-    color: white;
+/* LIKE */
+.like {
+    background: #28a745;
 }
 
-button[value="dislike"] {
-    background-color: #dc3545;
-    color: white;
+.like:hover {
+    background: #218838;
 }
 
-button[value="love"] {
-    background-color: #e83e8c;
+/* DISLIKE */
+.dislike {
+    background: #dc3545;
+}
+
+.dislike:hover {
+    background: #c82333;
+}
+
+/* TABLA */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* HEADER */
+th {
+    background: #667eea;
     color: white;
+    padding: 12px;
+}
+
+/* CELDAS */
+td {
+    padding: 10px;
+    text-align: center;
+    color: #333;
+}
+
+/* FILAS */
+tr:nth-child(even) {
+    background: #f4f6ff;
+}
+
+tr:hover {
+    background: #e9ecff;
+    transition: 0.2s;
+}
+
+/* BOTÓN ELIMINAR */
+td a {
+    text-decoration: none;
+    background: #dc3545;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+td a:hover {
+    background: #b02a37;
 }
