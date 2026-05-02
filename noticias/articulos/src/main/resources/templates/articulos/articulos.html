@@ -6,9 +6,24 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-
+	<nav class="navbar">
+				<nav class="navbar">
+				        <!-- Ahora es una etiqueta 'a' que apunta a index.html -->
+				        <a href="https://anthonyzc05.github.io/noticia_digital/" class="navbar-brand">
+				            <i class="fa-solid fa-layer-group"></i> NexusNews Hub
+				        </a>
+				    </nav>
+			    <ul class="nav-menu">
+					<li><a href="http://localhost:8083/comentarios">Comentarios</a></li>
+			        <li><a href="http://localhost:8082/categorias">Categorias</a></li>
+			        <li><a href="http://localhost:8084/usuarios" >Usuarios</a></li>
+			        <li><a href="http://localhost:8081/articulos" class="active">Articulos</a></li>
+					<li><a href="http://localhost:8086/reacciones"class="btn-nuevo">Reacciones</a></li>
+					<li><a href="http://localhost:8085/notificaciones">Notificaciones</a></li>
+					<li><a href="http://localhost:8087/lista">Articulos Favoritos</a></li>
+			    </ul>
+			</nav>
 <div class="contenedor">
-
     <!-- 🔹 FORMULARIO -->
     <div class="card">
         <h1>Registrar Artículo</h1>
@@ -63,7 +78,7 @@
                     <td th:text="${a.autorId}"></td>
                     <td th:text="${a.fecha}"></td>
                     <td>
-                        <a th:href="@{'/articulos/eliminar/' + ${a.id}}"
+                        <a class="holaboton" th:href="@{'/articulos/eliminar/' + ${a.id}}"
                            onclick="return confirm('¿Eliminar artículo?')">
                             Eliminar
                         </a>

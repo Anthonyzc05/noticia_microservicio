@@ -6,11 +6,28 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-
+	<nav class="navbar">
+					<nav class="navbar">
+					        <!-- Ahora es una etiqueta 'a' que apunta a index.html -->
+					        <a href="https://anthonyzc05.github.io/noticia_digital/" class="navbar-brand">
+					            <i class="fa-solid fa-layer-group"></i> NexusNews Hub
+					        </a>
+					    </nav>
+				    <ul class="nav-menu">
+						<li><a href="http://localhost:8083/comentarios" class="active">Comentarios</a></li>
+				        <li><a href="http://localhost:8082/categorias" class="btn-nuevo">Categorias</a></li>
+				        <li><a href="http://localhost:8084/usuarios" >Usuarios</a></li>
+				        <li><a href="http://localhost:8081/articulos" >Articulos</a></li>
+						<li><a href="http://localhost:8086/reacciones">Reacciones</a></li>
+						<li><a href="http://localhost:8085/notificaciones">Notificaciones</a></li>
+						<li><a href="http://localhost:8087/lista">Articulos Favoritos</a></li>
+				    </ul>
+				</nav>
 <div class="contenedor">
 
     <!-- FORMULARIO -->
     <div class="card">
+	
         <h1>Gestión de Comentarios</h1>
 
         <form th:action="@{/comentarios/guardar}" th:object="${comentario}" method="post">

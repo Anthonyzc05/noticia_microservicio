@@ -5,9 +5,25 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-
+	<nav class="navbar">
+					<nav class="navbar">
+					        <!-- Ahora es una etiqueta 'a' que apunta a index.html -->
+					        <a href="https://anthonyzc05.github.io/noticia_digital/" class="navbar-brand">
+					            <i class="fa-solid fa-layer-group"></i> NexusNews Hub
+					        </a>
+					    </nav>
+				    <ul class="nav-menu">
+						<li><a href="http://localhost:8083/comentarios">Comentarios</a></li>
+				        <li><a href="http://localhost:8082/categorias">Categorias</a></li>
+				        <li><a href="http://localhost:8084/usuarios" >Usuarios</a></li>
+				        <li><a href="http://localhost:8081/articulos" >Articulos</a></li>
+						<li><a href="http://localhost:8086/reacciones"class="active">Reacciones</a></li>
+						<li><a href="http://localhost:8085/notificaciones"class="btn-nuevo">Notificaciones</a></li>
+						<li><a href="http://localhost:8087/lista">Articulos Favoritos</a></li>
+				    </ul>
+				</nav>
 <h1>Gestión de Reacciones</h1>
-<a href="http://localhost:8084/usuarios ">Regreso a usuario</a>
+
 <div class="container">
 
     <!-- CARD PRINCIPAL -->
@@ -42,6 +58,7 @@
 
     <!-- TABLA -->
     <div class="card">
+		
         <h3>Lista de Reacciones</h3>
 
         <table >
