@@ -1,0 +1,113 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: articulos-service
+          uri: http://localhost:8081
+          predicates:
+            - Path=/api/articulos/**
+          filters:
+            - StripPrefix=0
+
+        - id: categorias-service
+          uri: http://localhost:8082
+          predicates:
+            - Path=/api/categorias/**
+          filters:
+            - StripPrefix=0
+
+        - id: comentarios-service
+          uri: http://localhost:8083
+          predicates:
+            - Path=/api/comentarios/**
+          filters:
+            - StripPrefix=0
+
+        - id: usuarios-service
+          uri: http://localhost:8084
+          predicates:
+            - Path=/api/usuarios/**
+          filters:
+            - StripPrefix=0
+
+        - id: notificaciones-service
+          uri: http://localhost:8085
+          predicates:
+            - Path=/api/notificaciones/**
+          filters:
+            - StripPrefix=0
+
+        - id: reacciones-service
+          uri: http://localhost:8086
+          predicates:
+            - Path=/api/reacciones/**
+          filters:
+            - StripPrefix=0
+
+        - id: favoritos-service
+          uri: http://localhost:8087
+          predicates:
+            - Path=/api/favoritos/**
+          filters:
+            - StripPrefix=0
+
+        - id: articulos-vista
+          uri: http://localhost:8081
+          predicates:
+            - Path=/articulos/**
+          filters:
+            - StripPrefix=0
+
+        - id: categorias-vista
+          uri: http://localhost:8082
+          predicates:
+            - Path=/categorias/**
+          filters:
+            - StripPrefix=0
+
+        - id: comentarios-vista
+          uri: http://localhost:8083
+          predicates:
+            - Path=/comentarios/**
+          filters:
+            - StripPrefix=0
+
+        - id: usuarios-vista
+          uri: http://localhost:8084
+          predicates:
+            - Path=/usuarios/**
+          filters:
+            - StripPrefix=0
+
+        - id: notificaciones-vista
+          uri: http://localhost:8085
+          predicates:
+            - Path=/notificaciones/**
+          filters:
+            - StripPrefix=0
+
+        - id: reacciones-vista
+          uri: http://localhost:8086
+          predicates:
+            - Path=/reacciones/**
+          filters:
+            - StripPrefix=0
+
+        - id: favoritos-vista
+          uri: http://localhost:8087
+          predicates:
+            - Path=/lista/**
+          filters:
+            - StripPrefix=0
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
