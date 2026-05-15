@@ -1,0 +1,137 @@
+version: '3.8'
+
+networks:
+  noticias-network:
+    driver: bridge
+
+services:
+
+  mongodb:
+    image: mongo:7.0
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    networks:
+      - noticias-network
+    volumes:
+      - mongodb_data:/data/db
+    restart: unless-stopped
+
+  articulos-service:
+    build:
+      context: ./articulos
+      dockerfile: Dockerfile
+    container_name: articulos-service
+    ports:
+      - "8081:8081"
+    networks:
+      - noticias-network
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://mongodb:27017/noticiasdb
+    depends_on:
+      - mongodb
+
+  categorias-service:
+    build:
+      context: ./categorias
+      dockerfile: Dockerfile
+    container_name: categorias-service
+    ports:
+      - "8082:8082"
+    networks:
+      - noticias-network
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://mongodb:27017/noticiasdb
+    depends_on:
+      - mongodb
+
+  comentarios-service:
+    build:
+      context: ./comentarios
+      dockerfile: Dockerfile
+    container_name: comentarios-service
+    ports:
+      - "8083:8083"
+    networks:
+      - noticias-network
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://mongodb:27017/noticiasdb
+    depends_on:
+      - mongodb
+
+  usuarios-service:
+    build:
+      context: ./usuarios
+      dockerfile: Dockerfile
+    container_name: usuarios-service
+    ports:
+      - "8084:8084"
+    networks:
+      - noticias-network
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://mongodb:27017/noticiasdb
+    depends_on:
+      - mongodb
+
+  notificaciones-service:
+    build:
+      context: ./notificaciones
+      dockerfile: Dockerfile
+    container_name: notificaciones-service
+    ports:
+      - "8085:8085"
+    networks:
+      - noticias-network
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://mongodb:27017/noticiasdb
+    depends_on:
+      - mongodb
+
+  reacciones-service:
+    build:
+      context: ./reacciones
+      dockerfile: Dockerfile
+    container_name: reacciones-service
+    ports:
+      - "8086:8086"
+    networks:
+      - noticias-network
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://mongodb:27017/noticiasdb
+    depends_on:
+      - mongodb
+
+  favoritos-service:
+    build:
+      context: ./favoritos
+      dockerfile: Dockerfile
+    container_name: favoritos-service
+    ports:
+      - "8087:8087"
+    networks:
+      - noticias-network
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://mongodb:27017/noticiasdb
+    depends_on:
+      - mongodb
+
+  api-gateway:
+    build:
+      context: ./api-gateway
+      dockerfile: Dockerfile
+    container_name: api-gateway
+    ports:
+      - "8080:8080"
+    networks:
+      - noticias-network
+    depends_on:
+      - articulos-service
+      - categorias-service
+      - comentarios-service
+      - usuarios-service
+      - notificaciones-service
+      - reacciones-service
+      - favoritos-service
+
+volumes:
+  mongodb_data:
